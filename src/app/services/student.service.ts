@@ -38,4 +38,7 @@ export class StudentService {
       return null;
     }
   }
+  public removeStudent(id : string){
+    this.angularFirestore.collection("students").doc(id).delete();
+  }
 }

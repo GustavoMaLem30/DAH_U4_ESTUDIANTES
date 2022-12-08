@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { StudentService } from '../services/student.service';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-update-student',
@@ -12,7 +12,7 @@ import { StudentService } from '../services/student.service';
 })
 export class UpdateStudentPage implements OnInit {
 
-  constructor(private fb: FormBuilder,private activatedRouter: ActivatedRoute,private studentService:StudentService) { 
+  constructor(private fb: FormBuilder,private activatedRouter: ActivatedRoute,private studentService:StudentService,private router:Router) { 
     this.student = 
     {
       controlnumber: "",
@@ -35,7 +35,6 @@ export class UpdateStudentPage implements OnInit {
     this.activatedRouter.queryParams.subscribe((params) =>{
       this.studentService.getStudentById(params.id).subscribe(item =>{this.student = item as Student})
       this.id = params.id;
-      
     })
 
     this.myForm = this.fb.group({
@@ -114,17 +113,9 @@ export class UpdateStudentPage implements OnInit {
     }
   }
   public updateStudent(){
-    this.student = {
-      controlnumber: this.myForm.controls.controlnumber.value,
-      name: this.myForm.controls.name.value,
-      curp: this.myForm.controls.curp.value,
-      age: this.myForm.controls.age.value,
-      nip: this.myForm.controls.nip.value,
-      email: this.myForm.controls.email.value,
-      photo: this.myForm.controls.photo.value,
-      career: this.myForm.controls.career.value,
-  }
     this.studentService.updateStudent(this.student,this.id);
+    this.router.navigate(['/home'], {
+    });
   }
 
 }

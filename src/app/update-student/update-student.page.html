@@ -1,5 +1,8 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+  </ion-buttons>
     <ion-title>Actualiza el estudiante</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -12,7 +15,7 @@
         <ion-col>
           <ion-item>
             <ion-label position="floating">Ingrese número de control</ion-label>
-            <ion-input formControlName="controlnumber" [value]="student.controlnumber"></ion-input>
+            <ion-input formControlName="controlnumber" [value]="student.controlnumber" [(ngModel)]="student.controlnumber"></ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
@@ -31,7 +34,7 @@
         <ion-col>
           <ion-item>
             <ion-label position="floating">Ingrese nombre de estudiante</ion-label>
-            <ion-input formControlName="name" [value]="student.name"></ion-input>
+            <ion-input formControlName="name" [value]="student.name" [(ngModel)]="student.name"></ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
@@ -50,7 +53,7 @@
         <ion-col>
           <ion-item>
             <ion-label position="floating">Ingrese curp de estudiante</ion-label>
-            <ion-input formControlName="curp" [value]="student.curp"></ion-input>
+            <ion-input formControlName="curp" [value]="student.curp" [(ngModel)]="student.curp"></ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
@@ -70,7 +73,7 @@
         <ion-col>
           <ion-item>
             <ion-label position="floating">Ingrese edad</ion-label>
-            <ion-input formControlName="age" [value]="student.age"></ion-input>
+            <ion-input formControlName="age" [value]="student.age" [(ngModel)]="student.age"></ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
@@ -90,7 +93,7 @@
         <ion-col>
           <ion-item>
             <ion-label position="floating">Ingrese nip</ion-label>
-            <ion-input formControlName="nip" [value]="student.nip"></ion-input>
+            <ion-input formControlName="nip" [value]="student.nip" [(ngModel)]="student.nip"></ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
@@ -110,7 +113,7 @@
         <ion-col>
           <ion-item>
             <ion-label position="floating">Ingrese email</ion-label>
-            <ion-input formControlName="email" [value]="student.email"></ion-input>
+            <ion-input formControlName="email" [value]="student.email" [(ngModel)]="student.email"></ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
@@ -131,7 +134,7 @@
           <ion-list>
             <ion-item>
               <ion-label position="floating">Carrera</ion-label>
-              <ion-select placeholder="Selecciona una carrera" formControlName="career" [value]="student.career">
+              <ion-select placeholder="Selecciona una carrera" formControlName="career" [value]="student.career" [(ngModel)]="student.career">
                 <ion-select-option *ngFor="let item of careers; let i=index">{{item}}</ion-select-option>
               </ion-select>
             </ion-item>
@@ -154,7 +157,7 @@
         <ion-col>
           <ion-item>
             <ion-label position="floating">Ingrese fotografia</ion-label>
-            <ion-input formControlName="photo" [value]="student.photo"></ion-input>
+            <ion-input formControlName="photo" [value]="student.photo" [(ngModel)]="student.photo"></ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
@@ -169,7 +172,7 @@
         </ng-container>
       </div>
       <!--AQUÍ TERMINA VALIDACIÓN-->
-      <ion-button [disabled]="!myForm.valid" slot="end" (click)="updateStudent()" expand="block" fill="clear"
+      <ion-button slot="end" (click)="updateStudent()" expand="block" fill="clear"
         shape="round">
         Actualizar el estudiante
       </ion-button>

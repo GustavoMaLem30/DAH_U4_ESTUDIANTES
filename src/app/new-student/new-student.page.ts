@@ -2,7 +2,7 @@ import { StudentService } from './../services/student.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Student } from '../models/student';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-student',
@@ -11,7 +11,7 @@ import { Student } from '../models/student';
 })
 export class NewStudentPage implements OnInit {
 
-  constructor(private fb: FormBuilder,private studentService:StudentService) { }
+  constructor(private fb: FormBuilder,private studentService:StudentService,private router:Router) { }
   public myForm: FormGroup;
   public validationMessages: Object;
   public careers: string[] = ['ISC', 'IQ', 'IBQ', 'ARQ']
@@ -104,6 +104,8 @@ export class NewStudentPage implements OnInit {
       career: this.myForm.controls.career.value,
     }
     this.studentService.newStudent(this.student);
+    this.router.navigate(['/home'], {
+    });
   }
 
 }
